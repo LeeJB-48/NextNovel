@@ -158,20 +158,6 @@ class UserLikedNovelAPI(ListAPIView):
         return queryset
 
 
-# To be deleted
-class UserTestAuthAPI(APIView):
-    def post(self, request):
-        user_id = request.data.get('user_id')
-        user = User.objects.get(pk=user_id)
-        refresh = RefreshToken.for_user(user)
-
-        data = {
-            'refresh': str(refresh),
-            'access': str(refresh.access_token),
-        }
-        return Response(data=data)
-
-
 class MytestAPI(APIView):
     def get(self, request):
         data = {
